@@ -1,0 +1,38 @@
+#https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab027/6395419
+#App-spaM commands
+#This tool is installed in my linux computer
+#path is
+/home/thanu/Desktop/App-SpaM/build
+
+#need to transfer refernce fasta, reference tree and query fasta to this folder
+#then simple run the following command
+./appspam -s fishsample60_5.fasta -t RAxML_bestTree.FR60_5 -q CO1_40_5.fasta -o R60_5.jplace
+
+
+#genesis commands (http://doc.genesis-lib.org/)
+
+#In compute canada
+#One time installation
+#Alternatively, in order to stay up to date, you can clone the repository. For this, you need to have Git installed. Then, call
+
+git clone https://github.com/lczech/genesis.git
+#in some directory. This will create a sub-directory genesis, containing all files. In case new commits are pushed to the GitHub repository, you can call
+
+git pull
+
+#Build
+#In the stand-alone variant, to build all of Genesis, call
+
+make
+
+#If you just pulled new commits from the repository, or added new files to be compiled (either an app, some lib function, or tests), you can call
+
+make update
+
+#In the following folder we can find labelled_tree program
+#need to transfer jplace files(it's a must) and also RAxML_best/results (optional) to this folder
+/home/thanuja/genesis/bin/apps
+#./labelled_tree <jplace_file> [<newick_tree_file>] <output_newick_tree_file>
+./labelled_tree R20_1.jplace R20_1.nwk
+
+If the optional <newick_tree_file> is given, this tree is used instead of the tree contained in the jplace file. It has to be topologically identical to the jplace tree, but can contain additional values like bootstrap support values. Currently, we only support such values that are stored as inner node names. This is for example given if a bootstrap tree of RAxML is used. When working with trees containing such values at inner nodes, also be aware of issues that might arise with other programs.
